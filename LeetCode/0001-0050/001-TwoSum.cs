@@ -12,17 +12,17 @@ namespace LeetCode
     {
         public int[] TwoSum(int[] nums, int target)
         {
+            int[] res = new int[2]{-1, -1};
             var dic = new Dictionary<int, int>();
-
-            for (int i = 0; i < nums.Length; i++)
-            {
-                if (dic.ContainsKey(nums[i]))
-                    return new int[] { dic[nums[i]], i };
-                else
-                    dic[target - nums[i]] = i;
+            for (int i = 0; i < nums.Length; i++) {
+                int tmp = target - nums[i];
+                if (dic.ContainsKey(tmp)) {
+                    res[0] = dic[tmp];
+                    res[1] = i;
+                }
+                dic[nums[i]] = i;
             }
-
-            return new int[] { };
+            return res;
         }
     }
 }
